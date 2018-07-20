@@ -8,11 +8,13 @@
 
     {% block styles %}
 {% bootstrap_css %}
+
     <link rel="stylesheet" href="css/styles.css">
 {% endblock %}
 
 </head>
 <body>
+{% include "navbar.html" %}
 
 {% block content %}
 
