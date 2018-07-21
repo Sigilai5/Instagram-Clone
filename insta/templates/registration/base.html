@@ -1,30 +1,36 @@
-{% load bootstrap3  %}
-{% load static %}
+{% load bootstrap3 %}
+{% load staticfiles %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {% block styles %}
-{% bootstrap_css %}
 
-    <link rel="stylesheet" href="css/styles.css">
-{% endblock %}
+  {%if title%}
+
+  <title>{{title}}</title>
+
+  {%endif%}
+
+  {% block styles %}
+    {% bootstrap_css %}
+  {% endblock %}
 
 </head>
+
 <body>
 {% include "navbar.html" %}
 
-{% block content %}
+  {% block content %}  {%endblock%}
 
 
-{%endblock%}
-
-{% block scripts %}
+  {% block scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-{% bootstrap_javascript %}
-{% endblock %}
+    {% bootstrap_javascript %}
+  {% endblock %}
 
 </body>
+
 </html>
