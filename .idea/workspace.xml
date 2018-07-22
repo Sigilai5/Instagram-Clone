@@ -186,9 +186,9 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="944" />
-    <option name="y" value="84" />
+    <option name="y" value="45" />
     <option name="width" value="974" />
-    <option name="height" value="747" />
+    <option name="height" value="825" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -223,7 +223,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="SearchEverywhereHistoryKey" value="term&#9;ACTION&#9;ActivateTerminalToolWindow&#10;ter&#9;ACTION&#9;ActivateTerminalToolWindow&#10;termi&#9;ACTION&#9;ActivateTerminalToolWindow&#10;registratio&#9;FILE&#9;file:///home/sigilai/PycharmProjects/Instagram/venv/lib/python3.6/site-packages/registration/tests/templates/registration/registration_form.html" />
+    <property name="SearchEverywhereHistoryKey" value="ter&#9;ACTION&#9;ActivateTerminalToolWindow&#10;term&#9;ACTION&#9;ActivateTerminalToolWindow&#10;termi&#9;ACTION&#9;ActivateTerminalToolWindow&#10;registratio&#9;FILE&#9;file:///home/sigilai/PycharmProjects/Instagram/venv/lib/python3.6/site-packages/registration/tests/templates/registration/registration_form.html" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
