@@ -1,10 +1,12 @@
 from django.db import models
+from tinymce.models import HTMLField
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Image(models.Model):
     image_name = models.CharField(max_length=30)
-    image_caption = models.CharField(max_length=30)
-    owner = models.CharField(max_length=20,default='Sigila')
+    post = HTMLField()
+    owner = models.ForeignKey(User, on_delete=models.CASCADE,default=1)
     post_image = models.ImageField(upload_to='post/',default='card')
 
     def __str__(self):
