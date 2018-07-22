@@ -1,12 +1,14 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from .models import *
 from django.contrib.auth.models import User
 # Create your views here.
 
 def home(request):
-    print(User)
+    image = Image.objects.all()
 
-    return render(request, 'home.html')
+
+    return render(request, 'home.html',locals())
 
 def profile(request):
 
