@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import NewImageForm
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -12,8 +13,9 @@ def home(request):
     return render(request, 'home.html',locals())
 
 def profile(request):
+    image = Image.objects.all()
 
-    return render(request,'profile.html')
+    return render(request,'profile.html',locals())
 
 @login_required(login_url='/accounts/login/')
 def image(request, image_idz):
@@ -32,6 +34,8 @@ def new_image(request):
 
     else:
         form = NewImageForm()
+
+    redirect('home.html')
 
     return render(request, 'new_image.html',locals())
 

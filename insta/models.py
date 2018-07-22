@@ -11,9 +11,12 @@ class Image(models.Model):
     post_image = models.ImageField(upload_to='post/',default='card')
     image_caption = models.CharField(max_length=30)
     owner = models.ForeignKey(User, on_delete=models.CASCADE,default='Brian')
-    post_image = models.ImageField(upload_to='post/', default='card')
+
 
     def __str__(self):
-        return self.image_name
+        return self.owner
     class Meta:
-        ordering = ['image_name']
+        ordering = ['owner']
+
+
+
