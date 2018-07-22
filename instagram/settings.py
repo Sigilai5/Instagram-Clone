@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'insta',
     'tinymce',
     'bootstrap3',
-    'tinymce',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -82,7 +81,7 @@ WSGI_APPLICATION = 'instagram.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'instagram',
+        'NAME': 'gram',
         'USER':'sigilai',
         'PASSWORD':'root'
     }
