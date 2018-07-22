@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8cbc6a5b-9683-45d8-964f-0b0881ccba21" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/insta/static/images/avatar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/insta/templates/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/insta/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/insta/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/insta/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/insta/templates/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/insta/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/insta/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/insta/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/insta/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="8cbc6a5b-9683-45d8-964f-0b0881ccba21" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,8 +41,17 @@
       <file leaf-file-name="profile.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/insta/templates/profile.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
+            <state relative-caret-position="308">
               <caret line="14" column="48" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/insta/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="6" column="58" selection-start-line="6" selection-start-column="58" selection-end-line="6" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -81,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/insta/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="220">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
@@ -99,20 +100,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="registration_form.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/insta/templates/registration/registration_form.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/insta/templates/registration/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
+            <state relative-caret-position="264">
+              <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -148,10 +140,8 @@
         <option value="$PROJECT_DIR$/insta/templates/account/login.html" />
         <option value="$PROJECT_DIR$/instagram/settings.py" />
         <option value="$PROJECT_DIR$/insta/templates/account/register.html" />
-        <option value="$PROJECT_DIR$/insta/models.py" />
         <option value="$PROJECT_DIR$/insta/admin.py" />
         <option value="$PROJECT_DIR$/insta/templates/registration/registration_form.html" />
-        <option value="$PROJECT_DIR$/insta/templates/registration/base.html" />
         <option value="$PROJECT_DIR$/insta/templates/registration/login.html" />
         <option value="$PROJECT_DIR$/insta/urls.py" />
         <option value="$PROJECT_DIR$/insta/templates/navbar.html" />
@@ -159,6 +149,8 @@
         <option value="$PROJECT_DIR$/insta/views.py" />
         <option value="$PROJECT_DIR$/insta/templates/profile.html" />
         <option value="$PROJECT_DIR$/insta/templates/home.html" />
+        <option value="$PROJECT_DIR$/insta/templates/registration/base.html" />
+        <option value="$PROJECT_DIR$/insta/models.py" />
       </list>
     </option>
   </component>
@@ -194,17 +186,6 @@
               <item name="Instagram" type="b2602c69:ProjectViewProjectNode" />
               <item name="Instagram" type="462c0819:PsiDirectoryNode" />
               <item name="insta" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Instagram" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Instagram" type="462c0819:PsiDirectoryNode" />
-              <item name="insta" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Instagram" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Instagram" type="462c0819:PsiDirectoryNode" />
-              <item name="instagram" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -285,8 +266,8 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3376344" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.40851992" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3376344" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21736756" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -561,13 +542,6 @@
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/registration/tests/templates/registration/registration_form.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/insta/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/insta/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
@@ -589,22 +563,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/insta/templates/registration/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/insta/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/insta/templates/registration/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="80" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/instagram/urls.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -643,17 +603,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/insta/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/insta/templates/registration/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/insta/templates/registration/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/insta/templates/profile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
+        <state relative-caret-position="308">
           <caret line="14" column="48" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/insta/templates/home.html">
+    <entry file="file://$PROJECT_DIR$/insta/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="132">
+          <caret line="6" column="58" selection-start-line="6" selection-start-column="58" selection-end-line="6" selection-end-column="58" />
         </state>
       </provider>
     </entry>
