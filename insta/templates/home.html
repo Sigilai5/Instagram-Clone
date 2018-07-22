@@ -1,18 +1,71 @@
-{%extends "registration/base.html"%}{% block content %}
+{%extends 'registration/base.html'%}
+{% load bootstrap3 %}
+{% load static %}
+{% block content %}
 {{block.super}}
 
-    {% if user.is_authenticated %}
-        <h2>Hey {{ user.username }}</h2>
 
-    {% endif %}
 
-    {% for img in image %}
+    <section class="gallery-block cards-gallery">
+    <div class="container">
 
-        <h3>{{ img.image_name }}</h3>
-        <img src="{{ img.post_image.url }}">
+    <div class="row">
+ {% for img in image %}
 
-    {% endfor %}
+     <!-- Modal -->
+<div class="modal fade" id="{{ img.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalCenterTitle">{{ img.image_name }}</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src="{{ img.post_image.url }}" alt="Card Image" class="card-img-top" width="100%" height="300px">
+
+      </div>
+      <div class="modal-footer">
+
+        <p><span class="glyphicon glyphicon-heart-empty" id="like"></span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="col-md-7 col-lg-5">
+	                <div class="card border-0 transform-on-hover" >
+	                	<a class="lightbox" data-target="#exampleModalCenter">
+	                		<img src="{{ img.post_image.url }}" alt="Card Image" class="card-img-top" width="100%" height="300px" data-toggle="modal" data-target="#{{ img.id }}">
+
+
+
+                        </a>
+
+	                </div>
+	            </div>
+
+     <!-- Button trigger modal -->
+
+
+
+
+
+        {% endfor %}
+    </div>
+    </div>
+    </section>
+
+
 
 {% endblock %}
+{% block scripts %} {{block.super}}
+  <script type="text/javascript" src="{%static 'js/scripts.js'%}"></script>
+{% endblock %}
+
+
+
 
 
