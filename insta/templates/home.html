@@ -17,7 +17,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title" id="exampleModalCenterTitle">{{ img.image_name }}</h1>
+        <h1 class="modal-title" id="exampleModalCenterTitle">@{{ img.owner }}</h1>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -28,7 +28,11 @@
       </div>
       <div class="modal-footer">
 
-        <p><span class="glyphicon glyphicon-heart-empty" id="like"></span></p>
+<img
+          <h6>@{{ img.owner }}</h6>
+
+
+
       </div>
     </div>
   </div>
@@ -39,6 +43,11 @@
 	                <div class="card border-0 transform-on-hover" >
 	                	<a class="lightbox" data-target="#exampleModalCenter">
 	                		<img src="{{ img.post_image.url }}" alt="Card Image" class="card-img-top" width="100%" height="300px" data-toggle="modal" data-target="#{{ img.id }}">
+                             <span id="like">
+                            <img src="{%static 'images/heart.png'%}" alt="Card Image" class="card-img-top" width="95%" height="30px">
+                            </span>
+                            <h6>@{{ img.owner }}</h6>
+
 
 
 
