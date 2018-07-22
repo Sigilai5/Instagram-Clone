@@ -9,3 +9,7 @@ class NewImageForm(forms.ModelForm):
         # widgets = {
         #     ''
         # }
+
+
+class CommentForm(forms.Form):
+    comment = forms.CharField(label='Comment', max_length=30)
