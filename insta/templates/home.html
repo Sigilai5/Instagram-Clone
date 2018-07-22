@@ -1,1 +1,10 @@
-{%extends "registration/base.html"%}
+{%extends "registration/base.html"%}{% block content %}
+{{block.super}}
+
+    {% if user.is_authenticated %}
+        <h2>Hey {{ user.username }}</h2>
+    {% endif %}
+
+{% endblock %}
+
+

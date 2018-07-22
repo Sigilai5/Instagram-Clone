@@ -1,0 +1,26 @@
+{%extends "registration/base.html"%}{% block content %}
+    {% load static %}
+{{block.super}}
+
+    {% if user.is_authenticated %}
+        <div class="col-md-7 col-lg-5">
+        <img src="{% static 'images/avatar.png' %}" height="300px" width="300px">
+
+        </div>
+
+        <div class="col-md-5 col-lg-7">
+        <h1>{{ user.username }}</h1>
+        <div class="col-md-1 col-lg-2"><h3>posts</h3></div>
+            <div class="col-md-1 col-lg-2"><h3>followers</h3></div>
+            <div class="col-md-1 col-lg-2"><h3>following</h3></div>
+
+
+        </div>
+
+    {% endif %}
+
+
+
+
+
+{% endblock %}
