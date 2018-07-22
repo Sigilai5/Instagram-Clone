@@ -7,7 +7,6 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Image(models.Model):
-    image_name = models.CharField(max_length=30)
     owner = models.ForeignKey(User, on_delete=models.CASCADE,default=1)
     post_image = models.ImageField(upload_to='post/',default='card')
     image_caption = models.CharField(max_length=30)
