@@ -5,16 +5,18 @@ from django import forms
 class NewImageForm(forms.ModelForm):
     class Meta:
         model = Image
-        exclude = ['owner','comment']
+        exclude = ['owner']
 
         # widgets = {
         #     ''
         # }
 
 
-class CommentForm(forms.Form):
-    model = Comments
-    exclude = ['image']
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comments
+        exclude =['image','by']
 
     comment = forms.CharField(label='Comment', max_length=30)
+
 

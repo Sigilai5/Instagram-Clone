@@ -20,13 +20,16 @@ class Image(models.Model):
 
 
     def __str__(self):
-        return self.owner
+        return self.image_caption
     class Meta:
         ordering = ['owner']
 
 class Comments(models.Model):
-    image = models.ForeignKey(Image, null=True, related_name='com')
     comment = models.TextField(default='Tri')
+    image = models.ForeignKey(Image, related_name='comment')
+    by = models.ForeignKey(User,related_name='by',null=True)
+
+
 
 
 

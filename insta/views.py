@@ -8,18 +8,20 @@ from django.contrib.auth.models import User
 
 def home(request):
     image = Image.objects.all()
+    comment = Comments.objects.all()
 
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
             print('valid')
             comment = form.cleaned_data['comment']
-            saving = Image(comment=comment,)
+            saving = Comments(comment=comment)
             saving.save()
     else:
+
         form = CommentForm()
 
-    return render(request, 'home.html',{"commentform":form,"image":image})
+    return render(request, 'home.html',{"commentform":form,"image":image,"comment":comment})
 
 def profile(request):
     image = Image.objects.all()
