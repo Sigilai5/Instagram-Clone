@@ -29,7 +29,7 @@ def profile(request):
     return render(request,'profile.html',locals())
 
 @login_required(login_url='/accounts/login/')
-def image(request, image_idz):
+def image(request):
     return  render(request,'registration/login.html')
 
 @login_required(login_url='/accounts/login/')
