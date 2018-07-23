@@ -13,8 +13,8 @@ def home(request):
         form = CommentForm(request.POST)
         if form.is_valid():
             print('valid')
-            comments = form.cleaned_data['comment']
-            saving = Image(comments=comments)
+            comment = form.cleaned_data['comment']
+            saving = Image(comment=comment,)
             saving.save()
     else:
         form = CommentForm()
