@@ -31,9 +31,11 @@
           <form action="{% url 'home' %}" method="post">
             {% csrf_token %}
 
-            {% bootstrap_form form layout='inline' %}
+            {% bootstrap_form commentform layout='inline' %}
             <input type="submit" value="Comment">
         </form>
+
+          <h5 style="float: left">{{ img.comment }}</h5>
 
 
           <h6>@{{ img.owner }}</h6>
@@ -51,9 +53,12 @@
 	                	<a class="lightbox" data-target="#exampleModalCenter">
 	                		<img src="{{ img.post_image.url }}" alt="Card Image" class="card-img-top" width="100%" height="300px" data-toggle="modal" data-target="#{{ img.id }}">
                              <span id="like">
+
                             <img src="{%static 'images/heart.png'%}" alt="Card Image" class="card-img-top" width="95%" height="30px">
-                            </span>
+
+                             </span>
                             <h6>@{{ img.owner }}</h6>
+
 
 
 

@@ -13,11 +13,13 @@ def home(request):
         form = CommentForm(request.POST)
         if form.is_valid():
             print('valid')
-        else:
-            form =CommentForm()
+            comments = form.cleaned_data['comment']
+            saving = Image(comments=comments)
+            saving.save()
+    else:
+        form = CommentForm()
 
-
-    return render(request, 'home.html',locals())
+    return render(request, 'home.html',{"commentform":form,"image":image})
 
 def profile(request):
     image = Image.objects.all()
