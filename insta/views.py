@@ -8,7 +8,13 @@ from django.contrib.auth.models import User
 
 def home(request):
     image = Image.objects.all()
-    form = CommentForm
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            print('valid')
+        else:
+            form =CommentForm()
 
 
     return render(request, 'home.html',locals())
@@ -33,10 +39,12 @@ def new_image(request):
             image.owner = current_user
             image.save()
 
+            redirect('home.html')
+
     else:
         form = NewImageForm()
 
-    redirect('home.html')
+
 
     return render(request, 'new_image.html',locals())
 

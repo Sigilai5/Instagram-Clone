@@ -12,11 +12,11 @@ class Comments(models.Model):
     comment = models.CharField(max_length=30,default='Comment')
 
 class Image(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE,default=1)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     post_image = models.ImageField(upload_to='post/',default='card')
-    image_caption = models.CharField(max_length=30)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE,default='Brian')
-    comments = models.ForeignKey(Comments,default='Comment')
+    image_caption = models.CharField(max_length=30,null=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
+    comments = models.ForeignKey(Comments,null=True)
 
 
     def __str__(self):
