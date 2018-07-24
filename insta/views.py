@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from .models import *
-from .forms import NewImageForm,CommentForm,SignupForm
+from .forms import NewImageForm,CommentForm,SignupForm,ProfileForm
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
@@ -77,32 +77,22 @@ def home(request):
 
     if request.method == 'POST':
         form = CommentForm(request.POST)
-        if form.is_valid():
-            print('valid')
-            comment = form.cleaned_data['comment']
-            saving = Comments(comment=comment)
-            saving.save()
-    else:
 
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.save()
+
+            redirect('home.html')
+
+    else:
         form = CommentForm()
 
-    return render(request, 'home.html',{"commentform":form,"image":image,"comment":comment})
+    return render(request, 'home.html',{"form":form,"image":image,"comment":comment})
 
 def profile(request):
     image = Image.objects.all()
 
-    # other_user = User.objects.get(pk=1)
-    # Friend.objects.add_friend(
-    #     request.user,
-    #     other_user,
-    #     message='Hello! can we be friends?'
-    # )
-    #
-    # friend_request = FriendshipRequest.objects.get(pk=1)
-    # friend_request.accept()
-
-#    friend_request.reject()
-
+    profile = Profile.objects.all()
 
     return render(request,'profile.html',locals())
 

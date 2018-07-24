@@ -4,8 +4,12 @@
 
     {% if user.is_authenticated %}
         <div class="col-md-7 col-lg-5">
-        <img src="{% static 'images/avatar.png' %}" height="300px" width="300px">
+        {% for prof in profile %}
+            {% if prof.user_id == user.id %}
 
+        <img src="{{ prof.pic.url }}" height="300px" width="300px" style="border-radius: 50%">
+            {% endif %}
+        {% endfor %}
         </div>
 
         <div class="col-md-5 col-lg-7">

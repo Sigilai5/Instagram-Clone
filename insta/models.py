@@ -30,7 +30,10 @@ class Comments(models.Model):
     by = models.ForeignKey(User,related_name='by',null=True)
 
 
-
+class Profile(models.Model):
+    pic = models.ImageField(upload_to='profile/',default='prof')
+    bio = HTMLField()
+    user = models.ForeignKey(User,related_name='user',null=True)
 
 
 

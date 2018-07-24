@@ -22,10 +22,16 @@ class NewImageForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
+    comment = forms.CharField(label='Comment', max_length=30)
+
     class Meta:
         model = Comments
         exclude =['image','by']
 
-    comment = forms.CharField(label='Comment', max_length=30)
 
 
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        exclude = ['user']
