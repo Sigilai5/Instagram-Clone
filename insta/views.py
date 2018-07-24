@@ -24,6 +24,7 @@ from django.template.loader import render_to_string
 from .token import account_activation_token
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
+from friendship.models import Friend, Follow, Block,FriendshipRequest
 
 def signup(request):
     if request.method == 'POST':
@@ -89,6 +90,19 @@ def home(request):
 
 def profile(request):
     image = Image.objects.all()
+
+    # other_user = User.objects.get(pk=1)
+    # Friend.objects.add_friend(
+    #     request.user,
+    #     other_user,
+    #     message='Hello! can we be friends?'
+    # )
+    #
+    # friend_request = FriendshipRequest.objects.get(pk=1)
+    # friend_request.accept()
+
+#    friend_request.reject()
+
 
     return render(request,'profile.html',locals())
 
