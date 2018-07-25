@@ -1,10 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{%extends "registration/base.html"%}
+{% block content %}
+<div class="container">
 
-</body>
-</html>
+  <div class="row">
+    {% if articles%}
+      <h2>Found {{ articles|length }} users of with the name {{message}}</h2>
+    {% else %}
+      <h2> Found 0 users with the name {{message}}</h2>
+    {% endif %}
+
+  </div>
+
+  <div class="row">
+
+  {% if articles %}
+    {% for article in articles %}
+      <div class="col-sm-6 col-md-3">
+      <img src="{{ article.pic.url }}">
+           <h3><a href="/accounts/profile/{{ article.user.username }}">{{ article.user.username }}</a></h3>
+      </div>
+    {% endfor %}
+  {% endif %}
+  </div>
+</div>
+{% endblock %}

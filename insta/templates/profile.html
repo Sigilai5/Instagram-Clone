@@ -13,8 +13,8 @@
         </div>
 
         <div class="col-md-5 col-lg-7">
-        <h1>@{{ user.username }}</h1>
-
+        <h1>@{{ user.username }}  <button>Follow</button></h1>
+{#{% if img.owner == user %}#}
 
 
         <div class="col-md-1 col-lg-2"><h3>{{ image|length }} posts</h3></div>
@@ -24,14 +24,14 @@
             <div class="col-md-1 col-lg-2"><h3>following</h3></div><br><br><br><br><br><br>
                 <h1>Posts</h1>
               {% for img in image %}
-            {% if img.owner == user %}
+
 
         <img src="{{ img.post_image.url }}" height="150px" width="300px">
 
 
 
 
-            {% endif %}
+
         {% endfor %}
 
     {% endif %}

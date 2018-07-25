@@ -2,16 +2,6 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import NewImageForm,CommentForm,SignupForm,ProfileForm
-from django.contrib.auth.models import User
-from django.http import HttpResponse
-from django.contrib.auth import login, authenticate
-from django.contrib.sites.shortcuts import get_current_site
-from django.utils.encoding import force_bytes,force_text
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.template.loader import render_to_string
-from .token import account_activation_token
-from django.contrib.auth.models import User
-from django.core.mail import EmailMessage
 
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -72,6 +62,7 @@ def activate(request, uidb64, token):
 # Create your views here.
 
 def home(request):
+
     image = Image.objects.all()
     comment = Comments.objects.all()
 
@@ -89,12 +80,33 @@ def home(request):
 
     return render(request, 'home.html',{"form":form,"image":image,"comment":comment})
 
-def profile(request):
-    image = Image.objects.all()
+def profile(request,User):
+    image = Image.filter_user(User)
 
     profile = Profile.objects.all()
 
     return render(request,'profile.html',locals())
+
+def nav(request,User):
+
+    user = User
+
+    return render(request,'navbar.html',locals())
+
+@login_required(login_url='/accounts/login')
+def edituser_profile(request):
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            edit = form.save(commit=False)
+            edit.user = request.user
+            edit.save()
+            return redirect('edituser_profile')
+
+        else:
+            form = ProfileForm()
+
+        return render(request, 'profile.html',locals())
 
 @login_required(login_url='/accounts/login/')
 def image(request):
@@ -121,4 +133,19 @@ def new_image(request):
     return render(request, 'new_image.html',locals())
 
 
+def search_users(request):
+
+    if 'article' in request.GET and request.GET["article"]:
+        search_term = request.GET.get("article")
+
+        articles = Profile.search_users(search_term)
+
+        message = f"{search_term}"
+
+        return render(request, 'search.html',locals() )
+
+    else:
+        message = "You have not searched any user"
+
+        return render(request, 'search.html',{"message":message})
 

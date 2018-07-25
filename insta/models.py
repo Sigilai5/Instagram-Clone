@@ -24,6 +24,11 @@ class Image(models.Model):
     class Meta:
         ordering = ['owner']
 
+    @classmethod
+    def filter_user(cls,user):
+        images = cls.objects.filter(owner__username__icontains=user)
+        return images
+
 class Comments(models.Model):
     comment = models.TextField(default='Tri')
     image = models.ForeignKey(Image, related_name='comment')
@@ -33,9 +38,12 @@ class Comments(models.Model):
 class Profile(models.Model):
     pic = models.ImageField(upload_to='profile/',default='prof')
     bio = HTMLField()
-    user = models.ForeignKey(User,related_name='user',null=True)
+    user = models.OneToOneField(User,related_name='user',null=True)
 
-
+    @classmethod
+    def search_users(cls,search_user):
+        users = cls.objects.filter(user__username__icontains=search_user)
+        return users
 
 
 
