@@ -38,7 +38,7 @@ class Comments(models.Model):
 class Profile(models.Model):
     pic = models.ImageField(upload_to='profile/',default='prof')
     bio = HTMLField()
-    user = models.OneToOneField(User,related_name='user',null=True)
+    user = models.OneToOneField(User,related_name='profile',null=True)
 
     @classmethod
     def search_users(cls,search_user):

@@ -27,13 +27,14 @@
 
       </div>
       <div class="modal-footer">
+      {{ form.media }}
 
-          <form action="{% url 'home' %}" method="post">
-            {% csrf_token %}
+      <form action="{% url 'home' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" class="button" value="post">
 
-            {% bootstrap_form form layout='inline' %}
-            <input type="submit" value="Comment">
-        </form>
+    </form>
 
    <div class="par">
           {% for com in comment %}
@@ -48,12 +49,12 @@
 </div>
 
 
-    <div class="col-md-7 col-lg-5">
+    <div class="col-md-7 col-lg-9">
 	                <div class="card border-0 transform-on-hover" >
 	                	<a class="lightbox" data-target="#exampleModalCenter">
                             <h6>@{{ img.owner }}</h6>
 
-	                		<img src="{{ img.post_image.url }}" alt="Card Image" class="card-img-top" width="100%" height="300px" data-toggle="modal" data-target="#{{ img.id }}">
+	                		<img src="{{ img.post_image.url }}" alt="Card Image" class="card-img-top" width="100%" height="500px" data-toggle="modal" data-target="#{{ img.id }}">
                              <span id="like">
 
 

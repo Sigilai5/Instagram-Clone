@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from .models import *
-from .forms import NewImageForm,CommentForm,SignupForm,ProfileForm
+from .forms import *
 
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -14,6 +14,10 @@ from django.template.loader import render_to_string
 from .token import account_activation_token
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
+from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
 from friendship.models import Friend, Follow, Block,FriendshipRequest
 
 def signup(request):
@@ -80,12 +84,45 @@ def home(request):
 
     return render(request, 'home.html',{"form":form,"image":image,"comment":comment})
 
+
 def profile(request,User):
     image = Image.filter_user(User)
 
     profile = Profile.objects.all()
 
+    current_user = request.user
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            prof = form.save(commit=False)
+            profile.user = current_user
+            profile.save()
+
+    else:
+        form = ProfileForm()
+
+
     return render(request,'profile.html',locals())
+
+
+def prof(request):
+
+    current_user = request.user
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            prof = form.save(commit=False)
+            prof.user = current_user
+            prof.save()
+
+    else:
+        form = ProfileForm()
+
+
+    return render(request,'registration/new_profile.html',locals())
+
+
+
 
 def nav(request,User):
 
@@ -93,23 +130,14 @@ def nav(request,User):
 
     return render(request,'navbar.html',locals())
 
-@login_required(login_url='/accounts/login')
-def edituser_profile(request):
-    if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES)
-        if form.is_valid():
-            edit = form.save(commit=False)
-            edit.user = request.user
-            edit.save()
-            return redirect('edituser_profile')
 
-        else:
-            form = ProfileForm()
 
-        return render(request, 'profile.html',locals())
+
 
 @login_required(login_url='/accounts/login/')
 def image(request):
+
+
     return  render(request,'registration/login.html')
 
 @login_required(login_url='/accounts/login/')
@@ -123,17 +151,27 @@ def new_image(request):
             image.owner = current_user
             image.save()
 
-            redirect('home.html')
+            redirect('/')
 
     else:
         form = NewImageForm()
 
-
-
     return render(request, 'new_image.html',locals())
 
 
+
+
 def search_users(request):
+
+    # other_user = User.objects.get(pk=1)
+    # Friend.objects.add_friend(
+    #     request.user,  # The sender
+    #     other_user,  # The recipient
+    #     message='Hi! I would like to add you')  # This message is optional
+    #
+    # friend_request = FriendshipRequest.objects.get(pk=1)
+    # friend_request.accept()
+    # or friend_request.reject()
 
     if 'article' in request.GET and request.GET["article"]:
         search_term = request.GET.get("article")
@@ -146,6 +184,9 @@ def search_users(request):
 
     else:
         message = "You have not searched any user"
+
+
+
 
         return render(request, 'search.html',{"message":message})
 

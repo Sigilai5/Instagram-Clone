@@ -8,6 +8,7 @@ urlpatterns =[
     url('^$',views.home,name='home'),
     url(r'^accounts/profile/(?P<User>.*)',views.profile,name='profile'),
     url(r'^accounts/profile/(?P<User>.*)', views.nav, name='nav'),
+    url(r'^new/profile/', views.prof, name='prof'),
     url(r'^new/image$', views.new_image, name='new_image'),
     url(r'^search/', views.search_users, name='search_users'),
     url(r'^signup/$',views.signup, name='signup'),

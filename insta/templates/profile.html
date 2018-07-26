@@ -1,19 +1,47 @@
 {%extends "registration/base.html"%}{% block content %}
+    {{ form.media }}
+
+
     {% load static %}
 {{block.super}}
 
     {% if user.is_authenticated %}
         <div class="col-md-7 col-lg-5">
+        <a href="{% url 'prof' %}"><button>Update Profile</button></a>
         {% for prof in profile %}
             {% if prof.user_id == user.id %}
 
         <img src="{{ prof.pic.url }}" height="300px" width="300px" style="border-radius: 50%">
+                <h2>Bio</h2>
+                 <h3>{{ prof.bio }}</h3>
+
+
+
+
+                 {{ form.media }}
+
+
+
+
+    </div>
+
+
+
+
+
+
             {% endif %}
         {% endfor %}
         </div>
 
         <div class="col-md-5 col-lg-7">
-        <h1>@{{ user.username }}  <button>Follow</button></h1>
+        <h1>@{{ user.username }}
+
+           <button>Follow</button>
+
+
+
+        </h1>
 {#{% if img.owner == user %}#}
 
 
@@ -37,6 +65,8 @@
     {% endif %}
 
         </div>
+
+
 
 
 
