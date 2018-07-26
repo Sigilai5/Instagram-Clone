@@ -2,6 +2,7 @@
 {% load bootstrap3 %}
 {% load static %}
 {% block content %}
+       {{ form.media }}
 {{block.super}}
 
 
@@ -27,14 +28,9 @@
 
       </div>
       <div class="modal-footer">
-      {{ form.media }}
 
-      <form action="{% url 'home' %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {% bootstrap_form form %}
-        <input type="submit" class="button" value="post">
 
-    </form>
+
 
    <div class="par">
           {% for com in comment %}
@@ -59,7 +55,7 @@
 
 
                              <div class="par">
-                                <img src="{%static 'images/heart.png'%}" alt="Card Image" class="card-img-top" width="95%" height="30px">
+
                              </div>
 
 
@@ -74,6 +70,17 @@
                         </a>
 
 	                </div>
+
+     <div class='header3'>
+            <h3>3 Comments</h3>
+            </div>
+            <div class='desc'>
+            <p><strong>Name of The Owner:</strong></p>
+            <p><strong>Passport Number:</strong></p>
+            <p><strong>Location:</strong></p>
+
+            </div>
+
 	            </div>
 
      <!-- Button trigger modal -->

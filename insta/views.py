@@ -70,37 +70,36 @@ def home(request):
     image = Image.objects.all()
     comment = Comments.objects.all()
 
+
+
+    return render(request, 'home.html',{"image":image,"comment":comment})
+
+def comment(request,comment):
+    # image = Image.filter_location(location)
+
+    current_user = request.user
+    post_id = comment
     if request.method == 'POST':
         form = CommentForm(request.POST)
 
         if form.is_valid():
             comment = form.save(commit=False)
+            comment.by = current_user
+            comment.image = post_id
             comment.save()
 
-            redirect('home.html')
+            redirect('/')
 
     else:
         form = CommentForm()
 
-    return render(request, 'home.html',{"form":form,"image":image,"comment":comment})
+    return render(request,'comment.html',locals())
 
 
 def profile(request,User):
     image = Image.filter_user(User)
 
     profile = Profile.objects.all()
-
-    current_user = request.user
-    if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES)
-        if form.is_valid():
-            prof = form.save(commit=False)
-            profile.user = current_user
-            profile.save()
-
-    else:
-        form = ProfileForm()
-
 
     return render(request,'profile.html',locals())
 
