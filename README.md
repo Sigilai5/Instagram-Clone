@@ -22,8 +22,8 @@ Activate virtual environment using python3.6 as default handler
 virtualenv -p /usr/bin/python3.6 venv && source venv/bin/activate
 ```
 
-### Install dependancies
-Install dependancies that will create an environment for the app to run
+### Install dependencies
+Install dependencies that will create an environment for the app to run
 `pip3 install -r requirements.txt`
 
 ### Create the Database
@@ -35,7 +35,7 @@ CREATE DATABASE instagram;
 ```
 ### Run initial Migration
 ```bash
-python3.6 manage.py makemigrations gallery
+python3.6 manage.py makemigrations insta
 python3.6 manage.py migrate
 ```
 
