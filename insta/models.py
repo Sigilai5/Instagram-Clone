@@ -15,9 +15,8 @@ class Image(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     post_image = models.ImageField(upload_to='post/',default='card')
     image_caption = models.CharField(max_length=30,null=True)
+    image_date = models.DateTimeField(auto_now_add=True,null=True)
     # comment = models.CharField(max_length=30, default='Comment',blank=True)
-
-
 
     def __str__(self):
         return self.image_caption
@@ -33,12 +32,14 @@ class Comments(models.Model):
     comment = models.TextField(default='Tri')
     image = models.ForeignKey(Image, related_name='comment')
     by = models.ForeignKey(User,related_name='by',null=True)
+    comment_date = models.DateTimeField(auto_now_add=True,null=True)
 
 
 class Profile(models.Model):
     pic = models.ImageField(upload_to='profile/',default='prof')
     bio = HTMLField()
     user = models.OneToOneField(User,related_name='profile',null=True)
+    profile_date = models.DateTimeField(auto_now_add=True,null=True)
 
     @classmethod
     def search_users(cls,search_user):

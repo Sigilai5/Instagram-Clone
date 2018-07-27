@@ -1,6 +1,9 @@
 {%extends 'registration/base.html'%}
 {% load bootstrap3 %}
 {% load static %}
+{% load friendshiptags %}
+
+
 {% block content %}
        {{ form.media }}
 {{block.super}}
@@ -14,41 +17,37 @@
  {% for img in image %}
 
      <!-- Modal -->
-<div class="modal fade" id="{{ img.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title" id="exampleModalCenterTitle">@{{ img.owner }}</h1>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <img src="{{ img.post_image.url }}" alt="Card Image" class="card-img-top" width="100%" height="300px">
-
-      </div>
-      <div class="modal-footer">
-
-
-
-
-   <div class="par">
-          {% for com in comment %}
-              {% if com.image_id == img.id %}
-              <p><a href="" style="font-weight: bolder">@{{ com.by }}</a> {{ com.comment }}</p>
-              {% endif %}
-              {% endfor %}
-   </div>
-      </div>
-    </div>
-  </div>
-</div>
+{#<div class="modal fade" id="{{ img.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">#}
+{#  <div class="modal-dialog modal-dialog-centered" role="document">#}
+{#    <div class="modal-content">#}
+{#      <div class="modal-header">#}
+{#        <h1 class="modal-title" id="exampleModalCenterTitle">@{{ img.owner }}</h1>#}
+{#        <button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
+{#          <span aria-hidden="true">&times;</span>#}
+{#        </button>#}
+{#      </div>#}
+{#      <div class="modal-body">#}
+{#        <img src="{{ img.post_image.url }}" alt="Card Image" class="card-img-top" width="100%" height="300px">#}
+{##}
+{#      </div>#}
+{#      <div class="modal-footer">#}
+{##}
+{##}
+{##}
+{##}
+{#   <div class="par">#}
+{##}
+{#   </div>#}
+{#      </div>#}
+{#    </div>#}
+{#  </div>#}
+{#</div>#}
 
 
-    <div class="col-md-7 col-lg-9">
+    <div class="col-md-5 col-lg-7">
 	                <div class="card border-0 transform-on-hover" >
 	                	<a class="lightbox" data-target="#exampleModalCenter">
-                            <h6>@{{ img.owner }}</h6>
+                            <h6><img src="{{ img.owner.profile.pic.url }}" width="25px" height="25px" style="border-radius: 50%">{{ img.owner }}</h6>
 
 	                		<img src="{{ img.post_image.url }}" alt="Card Image" class="card-img-top" width="100%" height="500px" data-toggle="modal" data-target="#{{ img.id }}">
                              <span id="like">
@@ -72,31 +71,52 @@
 	                </div>
 
      <div class='header3'>
-            <h3>3 Comments</h3>
+            <h3> <a href="/image/{{ img.id }}"><span class="glyphicon glyphicon-comment com"></span></a>     <span class="glyphicon glyphicon-heart heart"></span>  </h3>
             </div>
             <div class='desc'>
-            <p><strong>Name of The Owner:</strong></p>
-            <p><strong>Passport Number:</strong></p>
-            <p><strong>Location:</strong></p>
-
+ {% for com in comment %}
+              {% if com.image_id == img.id %}
+              <p><a href="" style="font-weight: bolder">@{{ com.by }}</a> {{ com.comment }}</p>
+              {% endif %}
+              {% endfor %}
             </div>
 
 	            </div>
 
      <!-- Button trigger modal -->
-
-
-
-
-
         {% endfor %}
+       <div class="ex1">
+     <h2>Find Friends</h2>
+{% for user in users %}
+    <img src="{{ user.profile.pic.url }}" width="55px" height="55px" style="border-radius: 50%"> {{ user.username }}<br>
+     {% endfor %}
+
+{##}
+{#     {% if profile in following%}#}
+{#                                       <a href="{%url 'follow' user_id=profile.id %}" class="btn btn-sm btn-primary followbtn">Following</a>#}
+{#                                   {% else %}#}
+{#                                       <a href="{%url 'follow' user_id=profile.id %}" class="btn btn-sm btn-primary followbtn">Follow</a>#}
+{#                                   {% endif %}#}
+
+
+
+     </div>
+
+     <div class="col-md-7 col-lg-5" id="us">
+
+
+
+
+ </div>
+
     </div>
     </div>
     </section>
 
-
-
 {% endblock %}
+
+
+
 {% block scripts %} {{block.super}}
   <script type="text/javascript" src="{%static 'js/scripts.js'%}"></script>
 {% endblock %}

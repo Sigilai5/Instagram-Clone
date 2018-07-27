@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import *
-
+from django.http import HttpResponse,Http404,HttpResponseRedirect
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
@@ -68,32 +68,13 @@ def activate(request, uidb64, token):
 def home(request):
 
     image = Image.objects.all()
+    users = User.objects.all()
+
     comment = Comments.objects.all()
 
 
 
-    return render(request, 'home.html',{"image":image,"comment":comment})
-
-def comment(request,comment):
-    # image = Image.filter_location(location)
-
-    current_user = request.user
-    post_id = comment
-    if request.method == 'POST':
-        form = CommentForm(request.POST)
-
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.by = current_user
-            comment.image = post_id
-            comment.save()
-
-            redirect('/')
-
-    else:
-        form = CommentForm()
-
-    return render(request,'comment.html',locals())
+    return render(request, 'home.html',{"image":image,"comment":comment,"users":users})
 
 
 def profile(request,User):
@@ -113,9 +94,11 @@ def prof(request):
             prof = form.save(commit=False)
             prof.user = current_user
             prof.save()
+            return redirect('prof')
 
     else:
         form = ProfileForm()
+
 
 
     return render(request,'registration/new_profile.html',locals())
@@ -149,14 +132,39 @@ def new_image(request):
             image = form.save(commit=False)
             image.owner = current_user
             image.save()
+            return redirect('home')
 
-            redirect('/')
+
 
     else:
         form = NewImageForm()
 
     return render(request, 'new_image.html',locals())
 
+def comment(request,image_id):
+    comment = Comments.objects.all()
+
+    try:
+        image = Image.objects.get(id = image_id)
+    except DoesNotExist:
+        raise Http404()
+
+    current_user = request.user
+    image_id = image_id
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            com = form.save(commit=False)
+            com.by = current_user
+            com.image = image
+            com.save()
+            return redirect('home')
+
+    else:
+        form = CommentForm()
+
+
+    return render(request,"comment.html", locals())
 
 
 
@@ -188,4 +196,13 @@ def search_users(request):
 
 
         return render(request, 'search.html',{"message":message})
+
+
+def follow(request,user_id):
+    folowee = User.objects.get(id = user_id)
+    try:
+        follow = Follow.objects.add_follower(request.user,folowee)
+    except AlreadyExistsError:
+        return Http404
+    return redirect('profile',username = request.user)
 
