@@ -20,7 +20,7 @@
     {% for article in articles %}
       <div class="col-sm-6 col-md-3">
       <img src="{{ article.pic.url }}">
-           <h3><a href="/accounts/profile/{{ article.user.username }}">{{ article.user.username }}</a></h3>
+           <h3 style="font-weight: bold">{{ article.user.username }}</h3>
       </div>
     {% endfor %}
   {% endif %}

@@ -2,6 +2,7 @@
 {% load bootstrap3 %}
 {% load static %}
 {% load friendshiptags %}
+{{ form.media }}
 
 
 {% block content %}
@@ -89,7 +90,8 @@
      <h2>Find Friends</h2>
 {% for user in users %}
     <img src="{{ user.profile.pic.url }}" width="55px" height="55px" style="border-radius: 50%"> {{ user.username }}<br>
-     {% endfor %}
+
+{% endfor %}
 
 {##}
 {#     {% if profile in following%}#}

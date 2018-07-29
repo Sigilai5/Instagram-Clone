@@ -36,3 +36,7 @@ class ProfileForm(forms.ModelForm):
 
 
 
+class LikeForm(forms.ModelForm):
+    class Meta:
+        model = Like
+        exclude = ['timestamp','post','user','total_likes']

@@ -35,6 +35,12 @@ class Comments(models.Model):
     comment_date = models.DateTimeField(auto_now_add=True,null=True)
 
 
+class Like(models.Model):
+    user = models.ForeignKey(User,related_name='us',null=True)
+    post = models.ForeignKey(User,related_name='post',null=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    total_likes = models.IntegerField(default=0)
+
 class Profile(models.Model):
     pic = models.ImageField(upload_to='profile/',default='prof')
     bio = HTMLField()

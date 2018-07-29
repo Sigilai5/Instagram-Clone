@@ -72,10 +72,17 @@ def home(request):
 
     comment = Comments.objects.all()
 
+    form = LikeForm(request.POST)
 
 
-    return render(request, 'home.html',{"image":image,"comment":comment,"users":users})
 
+    return render(request, 'home.html',{"image":image,"comment":comment,"users":users,"form":form})
+
+def like(request):
+
+    form = LikeForm(request.POST)
+
+    return render(request, 'like.html',{"form":form})
 
 def profile(request,User):
     image = Image.filter_user(User)
@@ -206,3 +213,32 @@ def follow(request,user_id):
         return Http404
     return redirect('profile',username = request.user)
 
+
+#
+# def like(request):
+#     vars = {}
+#     if request.method == 'POST':
+#         user = request.user
+#         slug = request.POST.get('slug', None)
+#         doctor = get_object_or_404(Doctor, slug=slug)
+#
+
+#         liked, created = Like.objects.create(Doctor=doctor)
+#
+#         try:
+#             user_liked = Like.objects.get(Doctor=doctor, user=user)
+#         except:
+#             user_liked = None
+#
+#         if user_liked:
+#             user_liked.total_likes -= 1
+#             liked.user.remove(request.user)
+#             user_liked.save()
+#         else:
+#             liked.user.add(request.user)
+#             liked.total_likes += 1
+#             liked.save()
+#
+#
+#     return HttpResponse(simplejson.dumps(vars),
+#                 mimetype='application/javascript')

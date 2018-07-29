@@ -11,6 +11,7 @@ urlpatterns =[
     url(r'^new/profile/', views.prof, name='prof'),
     url(r'^new/image$', views.new_image, name='new_image'),
     url(r'^image/(?P<image_id>\d+)',views.comment,name ='image'),
+    url(r'^like/(?P<id>\d+)/$', views.like, name='like'),
     url(r'^follow/(?P<user_id>\d+)',views.follow,name='follow'),
     url(r'^search/', views.search_users, name='search_users'),
     url(r'^signup/$',views.signup, name='signup'),
